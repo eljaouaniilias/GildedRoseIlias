@@ -3,9 +3,10 @@ using System.IO;
 using System.Text;
 using ApprovalTests;
 using ApprovalTests.Reporters;
+using GildedRoseIlias.ConsoleApp;
 using NUnit.Framework;
 
-namespace GildedRoseIlias.ConsoleApp
+namespace GildedRoseIlias.Tests
 {
     [UseReporter(typeof(DiffReporter))]
     [TestFixture]

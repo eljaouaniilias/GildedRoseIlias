@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using GildedRoseIlias.Library;
-namespace GildedRoseIlias.ConsoleApp
+namespace GildedRoseIlias.Library
 {
     public class GildedRose
     {

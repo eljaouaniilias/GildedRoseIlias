@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using GildedRoseIlias.ConsoleApp;
 using GildedRoseIlias.Library;
 
 namespace GildedRoseIlias.ConsoleApp
