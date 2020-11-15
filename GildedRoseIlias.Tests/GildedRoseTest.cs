@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using GildedRoseIlias.ConsoleApp;
+using GildedRoseIlias.ConsoleApp.Exceptions;
 using GildedRoseIlias.Library;
 using NUnit.Framework;
 
@@ -156,7 +158,7 @@ namespace GildedRoseIlias.Tests
                 new Item
                         {
                             Name = "Backstage passes to a TAFKAL80ETC concert",
-                            SellIn = 10,
+                            SellIn = 11,
                             Quality = 20
                         },
             };
@@ -166,7 +168,7 @@ namespace GildedRoseIlias.Tests
 
 
             Assert.AreEqual("Backstage passes to a TAFKAL80ETC concert", Items[0].Name);
-            Assert.AreEqual(9, Items[0].SellIn);
+            Assert.AreEqual(10, Items[0].SellIn);
             Assert.AreEqual(22, Items[0].Quality);
         }
 
@@ -178,7 +180,7 @@ namespace GildedRoseIlias.Tests
                 new Item
                         {
                             Name = "Backstage passes to a TAFKAL80ETC concert",
-                            SellIn = 5,
+                            SellIn = 6,
                             Quality = 20
                         },
             };
@@ -188,7 +190,7 @@ namespace GildedRoseIlias.Tests
 
 
             Assert.AreEqual("Backstage passes to a TAFKAL80ETC concert", Items[0].Name);
-            Assert.AreEqual(4, Items[0].SellIn);
+            Assert.AreEqual(5, Items[0].SellIn);
             Assert.AreEqual(23, Items[0].Quality);
         }
 
@@ -256,6 +258,28 @@ namespace GildedRoseIlias.Tests
             Assert.AreEqual("Conjured Mana Cake", Items[0].Name);
             Assert.AreEqual(-1, Items[0].SellIn);
             Assert.AreEqual(16, Items[0].Quality);
+        }
+
+        [Test]
+        public void Given_UnknownItem_When_NextDay_Then_ShouldThrowException()
+        {
+            Assert.Throws<UnknownItemTypeException>(new TestDelegate(TestUnknownItem));
+        }
+
+        private void TestUnknownItem()
+        {
+            IList<Item> Items = new List<Item>
+            {
+                new Item
+                {
+                    Name = "Unknown new item",
+                    SellIn = 0,
+                    Quality = 20
+                },
+            };
+
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
         }
     }
 }
